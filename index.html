@@ -77,6 +77,15 @@
     .grid{display:grid; gap:18px}
     .grid.cols-3{grid-template-columns: repeat(3, 1fr)}
     .card{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:22px; box-shadow: var(--shadow)}
+
+    /* IMPLANTS */
+    #implants .steps{display:grid; grid-template-columns: repeat(5, minmax(120px,1fr)); gap:10px; counter-reset:step}
+    #implants .steps li{list-style:none; position:relative; padding:10px 10px 10px 34px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03)}
+    #implants .steps li::before{counter-increment:step; content: counter(step); position:absolute; left:10px; top:10px; width:18px; height:18px; border-radius:50%; display:grid; place-items:center; font-size:12px; font-weight:800; color:#0b0f14; background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+
+    @media (max-width:980px){
+      #implants .steps{grid-template-columns:1fr;}
+    }
     .badge{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; background:rgba(122,167,255,.12); border:1px solid rgba(122,167,255,.3); color:var(--brand); border-radius:999px; font-weight:700; font-size:12px}
 
     /* PINNED ACHIEVEMENTS */
@@ -141,11 +150,12 @@
   <header id="home" class="hero">
     <div class="wrap">
       <div>
-        <div class="eyebrow">Oral Surgery • Dental Implants • Academic</div>
-        <h1 class="reveal">Compassionate surgical care<br/> with academic rigor.</h1>
-        <p class="reveal">Dr Reddy is an Oral & Maxillofacial / Oral Surgery specialist with decades of experience in complex extractions, dental implantology, and hospital-based care — alongside active involvement in teaching, research, and medical outreach.</p>
+        <div class="eyebrow">Dental Implants • Oral Surgery • Academic</div>
+        <h1 class="reveal">Implant‑led care, surgical precision.</h1>
+        <p class="reveal">Dr Reddy is an Oral & Maxillofacial / Oral Surgery specialist whose current practice is centred on dental implants — from single-tooth replacement to full‑arch immediate‑load solutions — alongside complex oral surgery, teaching, research, and outreach.</p>
         <div class="cta">
           <a class="btn primary" href="#appointments">Book an appointment</a>
+          <a class="btn" href="#implants">Implant options</a>
           <a class="btn" href="#qualifications">View qualifications</a>
         </div>
       </div>
@@ -160,180 +170,188 @@
     </div>
   </header>
 
+  <!-- IMPLANTS SECTION -->
+  <section id="implants">
+    <div class="section-wrap">
+      <div class="eyebrow">Implantology</div>
+      <h2 class="kicker">Dental Implants & Full‑Arch Solutions</h2>
+      <p class="muted">Most of Dr Reddy’s current clinical work is in implant dentistry. Treatment is planned digitally and delivered with a focus on long‑term function, aesthetics, and patient comfort.</p>
+
+      <div class="grid cols-3" style="margin-top:18px">
+        <article class="card reveal">
+          <span class="badge">Single Tooth</span>
+          <h3 style="margin:.6em 0 .2em">Replace a missing tooth</h3>
+          <p class="muted">Immediate or delayed placement depending on bone and soft‑tissue profile; custom abutments and screw‑retained crowns.</p>
+        </article>
+        <article class="card reveal">
+          <span class="badge">Multiple Teeth</span>
+          <h3 style="margin:.6em 0 .2em">Bridges supported by implants</h3>
+          <p class="muted">Segmental prostheses to avoid long‑span cantilevers; staged or simultaneous placement.</p>
+        </article>
+        <article class="card reveal">
+          <span class="badge">Full‑Arch</span>
+          <h3 style="margin:.6em 0 .2em">Immediate‑load (All‑on‑X)</h3>
+          <p class="muted">Teeth‑in‑a‑day protocols where appropriate; provisional fixed bridge on the day of surgery; definitive after integration.</p>
+        </article>
+      </div>
+
+      <div class="grid cols-3" style="margin-top:18px">
+        <article class="card reveal">
+          <span class="badge">Bone & Sinus</span>
+          <h3 style="margin:.6em 0 .2em">Grafting & sinus lift</h3>
+          <p class="muted">Socket preservation, GBR, ridge augmentation; lateral and crestal sinus augmentation based on CBCT assessment.</p>
+        </article>
+        <article class="card reveal">
+          <span class="badge">Digital</span>
+          <h3 style="margin:.6em 0 .2em">Guided surgery</h3>
+          <p class="muted">CBCT‑based planning, surgical guides, and intra‑oral scanning to improve accuracy and patient experience.</p>
+        </article>
+        <article class="card reveal">
+          <span class="badge">Revisions</span>
+          <h3 style="margin:.6em 0 .2em">Complication management</h3>
+          <p class="muted">Assessment and management of failing implants, prosthetic complications, and peri‑implant disease.</p>
+        </article>
+      </div>
+
+      <div class="card reveal" style="margin-top:18px">
+        <span class="badge">Patient pathway</span>
+        <ol class="muted steps" style="margin:10px 0 0 18px">
+          <li><strong>Consultation</strong> — history, photographs, and clinical exam.</li>
+          <li><strong>3D planning</strong> — CBCT / scans, risk assessment, and a personalised plan.</li>
+          <li><strong>Surgery</strong> — placement with or without grafting; immediate provisional where suitable.</li>
+          <li><strong>Integration</strong> — review and soft‑tissue maturation.</li>
+          <li><strong>Definitive restoration</strong> — custom abutment and crown/bridge; hygiene and maintenance plan.</li>
+        </ol>
+        <div class="cta" style="margin-top:12px">
+          <a class="btn primary" href="#appointments">Book via partner practices</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVANCED IMPLANTS (new) -->
+  <section id="advanced-implants">
+    <div class="section-wrap">
+      <div class="eyebrow">Advanced Implant Dentistry</div>
+      <h2 class="kicker">Complex cases only — referred, planned, and delivered with precision</h2>
+      <p class="muted">Dr Reddy’s current practice is focused on advanced implant rehabilitation. Cases are accepted on referral for complex indications and are planned with CBCT and digital workflows.</p>
+      <div class="grid cols-3" style="margin-top:18px">
+        <article class="card reveal">
+          <span class="badge">Full‑Arch</span>
+          <h3 style="margin:.6em 0 .2em">Immediate‑load (All‑on‑X)</h3>
+          <p class="muted">Teeth‑in‑a‑day protocols where suitable, with multi‑disciplinary planning and staged definitive prosthetics.</p>
+        </article>
+        <article class="card reveal">
+          <span class="badge">Graftless / Limited Bone</span>
+          <h3 style="margin:.6em 0 .2em">Advanced biomechanics</h3>
+          <p class="muted">Angulated implants, short implants, and staged options; zygomatic/pterygoid considered in selected centres.</p>
+        </article>
+        <article class="card reveal">
+          <span class="badge">Augmentation</span>
+          <h3 style="margin:.6em 0 .2em">GBR & sinus lift</h3>
+          <p class="muted">Socket preservation, ridge split/expansion, lateral/crestal sinus augmentation based on CBCT assessment.</p>
+        </article>
+        <article class="card reveal">
+          <span class="badge">Guided Surgery</span>
+          <h3 style="margin:.6em 0 .2em">Digital planning</h3>
+          <p class="muted">Intra‑oral scanning and guide fabrication to enhance accuracy and patient comfort.</p>
+        </article>
+        <article class="card reveal">
+          <span class="badge">Sedation & Comfort</span>
+          <h3 style="margin:.6em 0 .2em">LA • IV sedation • GA</h3>
+          <p class="muted">Sedation delivered in line with SAAD principles and practice protocols.</p>
+        </article>
+        <article class="card reveal">
+          <span class="badge">Revisions</span>
+          <h3 style="margin:.6em 0 .2em">Failing implants</h3>
+          <p class="muted">Assessment and management of peri‑implant disease and prosthetic complications.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- QUALIFICATIONS (center of page) -->
   <section id="qualifications">
     <div class="section-wrap">
       <div class="eyebrow">Credentials</div>
-      <h2 class="kicker">Degrees & Qualifications</h2>
-      <p class="muted">Replace the sample entries below with the exact details from the CV when provided.</p>
+      <h2 class="kicker">Academic Qualifications & Professional Registration</h2>
       <div class="grid cols-3" style="margin-top:18px">
         <article class="card reveal">
-          <span class="badge">🎓 Degree</span>
-          <h3 style="margin:.6em 0 .2em">BDS, MDS (Oral & Maxillofacial Surgery)</h3>
-          <p class="muted">University / Year — <em>placeholder</em></p>
+          <span class="badge">🎓 Education</span>
+          <h3 style="margin:.6em 0 .2em">BDS; MDS (Oral & Maxillofacial Surgery)</h3>
+          <p class="muted">Govt. Dental College & Hospital, Hyderabad — BDS (1993); MDS (1998).</p>
         </article>
         <article class="card reveal">
-          <span class="badge">🏅 Distinction</span>
-          <h3 style="margin:.6em 0 .2em">Gold Medal in Oral Surgery</h3>
-          <p class="muted">Awarding body / Year — <em>placeholder</em></p>
-        </article>
-        <article class="card reveal">
-          <span class="badge">📜 Affiliations</span>
-          <h3 style="margin:.6em 0 .2em">Fellowships & Memberships</h3>
-          <p class="muted">e.g., RCSEd / RCPSG / ITI — <em>placeholder</em></p>
+          <span class="badge">📜 Fellowships & Memberships</span>
+          <ul class="muted" style="margin:8px 0 0 18px">
+            <li>FDS RCSEd — Royal College of Surgeons of Edinburgh (2000)</li>
+            <li>FIBCSOMS — International Board Certification in OMFS</li>
+            <li>Life Member — AOMSI; ISOI</li>
+            <li>Member — SAAD (Sedation)</li>
+          </ul>
         </article>
         <article class="card reveal">
           <span class="badge">✅ Registration</span>
-          <h3 style="margin:.6em 0 .2em">GDC No. 83081 — Oral Surgery Specialist</h3>
-          <p class="muted">Listed on the UK Specialist List in Oral Surgery; Consultant Oral Surgeon with NHS Highland.</p>
-          <div class="cta"><a class="btn link" href="https://www.uniondentalinverness.co.uk/team" target="_blank" rel="noopener">Verify registration</a></div>
+          <h3 style="margin:.6em 0 .2em">Registered in the UK & India</h3>
+          <ul class="muted" style="margin:8px 0 0 18px">
+            <li>General Dental Council (UK) — <em>GDC number to be confirmed</em>. <a class="btn link" href="https://olr.gdc-uk.org/SearchRegister" target="_blank" rel="noopener">Verify on the GDC register</a></li>
+            <li>Dental Council of India — Dentist & OMFS Specialist</li>
+            <li>CPD up to date; SAAD sedation course; BLS & ATLS</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <span class="badge">🏥 NHS & Teaching</span>
+          <h3 style="margin:.6em 0 .2em">NHS Consultant (Locum) — NHS Highland</h3>
+          <p class="muted">Hospital-based oral surgery service, clinical governance, and supervision of trainees and DCTs.</p>
         </article>
       </div>
     </div>
   </section>
 
   <!-- CV HIGHLIGHTS (paste content from both CVs below) -->
-  <section id="cv">
-    <div class="section-wrap">
-      <div class="eyebrow">CV</div>
-      <h2 class="kicker">Curriculum Vitae — Highlights</h2>
-      <div class="grid" style="grid-template-columns:1fr 1fr; gap:18px; margin-top:18px">
-        <article class="card reveal">
-          <span class="badge">🎓 Education & Qualifications</span>
-          <ul class="muted" style="margin:8px 0 0 18px">
-            <li><strong>BDS</strong> — India</li>
-            <li><strong>MDS (Oral & Maxillofacial Surgery)</strong> — Govt. Dental College & Hospital, Hyderabad</li>
-            <li>Year details provided in CV (1997/1998).</li>
-          </ul>
-        </article>
-        <article class="card reveal">
-          <span class="badge">📜 Fellowships & Memberships</span>
-          <ul class="muted" style="margin:8px 0 0 18px">
-            <li><strong>FDSRCSEd</strong> — Fellow of the Royal College of Surgeons of Edinburgh (2000)</li>
-            <li><strong>FIBCSOMS</strong> — Fellow, International Board for Certification of Specialists in OMFS</li>
-            <li>Life Member — Association of Oral & Maxillofacial Surgeons of India (AOMSI)</li>
-            <li>Life Member — Indian Society of Oral Implantologists (ISOI)</li>
-            <li>Member — SAAD (Society for the Advancement of Anaesthesia in Dentistry)</li>
-          </ul>
-        </article>
-        <article class="card reveal">
-          <span class="badge">✅ Registrations & Compliance</span>
-          <ul class="muted" style="margin:8px 0 0 18px">
-            <li><strong>General Dental Council (UK)</strong> — Full dental registration (Statutory Exam 2004). <strong>GDC No:</strong> <em>[add number]</em></li>
-            <li><strong>Dental Council of India</strong> — Dentist & OMFS Specialist</li>
-            <li>CPD: Up to date</li>
-            <li>BLS & ATLS certificates (2000); SAAD sedation training (1999)</li>
-          </ul>
-        </article>
-        <article class="card reveal">
-          <span class="badge">🏥 NHS Consultant Listing</span>
-          <p class="muted">Locum <strong>Consultant Oral & Maxillofacial Surgeon</strong> at <strong>Raigmore Hospital, NHS Highland</strong> (2020–present). NHS consultant directory link and consultant/GDC number can be placed here once confirmed.</p>
-          <div class="cta" style="margin-top:8px">
-            <a class="btn" href="#appointments">Book via practices</a>
-          </div>
-        </article>
-        <article class="card reveal">
-          <span class="badge">📌 Current Role (since 2020)</span>
-          <ul class="muted" style="margin:8px 0 0 18px">
-            <li>Provide Oral Surgery services to Highland population including emergencies (Mon–Fri, 9–5)</li>
-            <li>LA/IV sedation/GA surgical care; outpatient & inpatient settings; all age groups including medically complex</li>
-            <li>Clinical governance: audits, M&M, liaison with primary care</li>
-            <li>Teaching & supervising DCTs and trainees</li>
-          </ul>
-        </article>
-        <article class="card reveal">
-          <span class="badge">🧭 Previous Roles (selected)</span>
-          <ul class="muted" style="margin:8px 0 0 18px">
-            <li><strong>2011–2019</strong> — Professor/Consultant, Panineeya Dental College & Research Centre (Hyderabad); private OMFS/implant practice; visiting hospital consultant. Concurrent Locum roles in UK (incl. NHS Highland).</li>
-            <li><strong>2006–2010</strong> — Reader in OMFS, Dr Shyamala Reddy Dental School (Bangalore).</li>
-            <li><strong>2004–2006</strong> — Locum Registrar, OMFS, Addenbrooke’s Hospital (Cambridge).</li>
-            <li><strong>1998–2004</strong> — SHO, OMFS across UK units (Canniesburn; Raigmore; South Tees; Peterborough; Countess of Chester).</li>
-          </ul>
-        </article>
-        <article class="card reveal">
-          <span class="badge">🛠️ Skills & Training</span>
-          <ul class="muted" style="margin:8px 0 0 18px">
-            <li>Oral Surgery (complex extractions, minor oral surgery), Implantology (immediate/complex), Oral Medicine</li>
-            <li>Conscious sedation (SAAD); GA theatre experience</li>
-            <li>Bone grafting courses; year‑long implant training (incl. Manchester, 2002; T.C. Usher, 2001)</li>
-          </ul>
-        </article>
-        <article class="card reveal">
-          <span class="badge">🎤 Presentations & Leadership</span>
-          <ul class="muted" style="margin:8px 0 0 18px">
-            <li>Chairman, Scientific Committee — AOMSI Regional OMFS Conference (Aug 2023)</li>
-            <li>Immediate Implant Rehabilitation — South Asia Implant Symposium (2014)</li>
-            <li>International Maxillofacial Prosthetics & Rehabilitation Conference — Inverness (2013)</li>
-            <li>Management of frontal sinus injuries — Annual OMFS India meet (2019)</li>
-          </ul>
-        </article>
-        <article class="card reveal">
-          <span class="badge">📚 Publications</span>
-          <ul class="muted" style="margin:8px 0 0 18px">
-            <li>Contributing author — <em>Oral & Maxillofacial Surgery for the Clinician</em>, Springer (AOMSI textbook)</li>
-            <li>Several articles in professional journals; additional manuscripts in preparation</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- PINNED ACHIEVEMENTS (scroll-reveal like Apple product pages) -->
   <section id="achievements">
-    <div class="section-wrap pin-wrap">
-      <div class="eyebrow">Highlights</div>
-      <h2 class="kicker">Academic & Extracurricular</h2>
-      <div class="panels">
-        <div class="panel" aria-label="Hospital & Teaching">
-          <div>
-            <h3>Hospital Appointments & Teaching</h3>
-            <div class="dotline"></div>
-            <p class="muted">Consultant/Locum roles; undergraduate and CPD teaching; invited talks. <em>Replace with specifics (institutions, years, responsibilities).</em></p>
-          </div>
-          <div class="visual">
-            <img src="https://images.unsplash.com/photo-1583912267550-d9f3f773fbdb?q=80&w=1200&auto=format&fit=crop" alt="Teaching and hospital work"/>
-          </div>
-        </div>
-        <div class="panel" aria-label="Research & Publications">
-          <div>
-            <h3>Research & Publications</h3>
-            <div class="dotline"></div>
-            <p class="muted">Peer‑reviewed articles, conference abstracts, study clubs. <em>Replace with titles, journals, links, and co‑authors.</em></p>
-          </div>
-          <div class="visual">
-            <img src="https://images.unsplash.com/photo-1581091014534-8987c1d4eb1b?q=80&w=1200&auto=format&fit=crop" alt="Research imagery"/>
-          </div>
-        </div>
-        <div class="panel" aria-label="Community & Outreach">
-          <div>
-            <h3>Community • Outreach • Leadership</h3>
-            <div class="dotline"></div>
-            <p class="muted">Student mentoring, surgical camps, dental society roles, charity events. <em>Replace with dates, locations, and roles.</em></p>
-          </div>
-          <div class="visual">
-            <img src="https://images.unsplash.com/photo-1551445520-6339d48c50b3?q=80&w=1200&auto=format&fit=crop" alt="Community and outreach"/>
-          </div>
-        </div>
+    <div class="section-wrap">
+      <div class="eyebrow">Experience</div>
+      <h2 class="kicker">Clinical & Academic Highlights</h2>
+      <div class="grid cols-3" style="margin-top:18px">
+        <article class="card reveal">
+          <h3>Hospital Appointments & Teaching</h3>
+          <p class="muted">Locum Consultant Oral & Maxillofacial Surgeon at Raigmore Hospital (NHS Highland), with ongoing teaching and supervision of trainees and DCTs.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Advanced Implant Focus</h3>
+          <p class="muted">Current practice is centred on complex implant rehabilitation — including immediate‑load full‑arch cases, grafting, and guided surgery.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Community & Outreach</h3>
+          <p class="muted">Supporter of CFC Nepal; involvement in surgical camps, mentoring, and regional conferences.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- PORTRAITS / GALLERY -->
-  <section id="gallery">
+  <!-- PUBLICATIONS -->
+  <section id="publications">
     <div class="section-wrap">
-      <div class="eyebrow">Gallery</div>
-      <h2 class="kicker">Portraits</h2>
-      <p class="muted">Drop two high‑resolution portraits below. Keep face prominent; background simple.</p>
-      <div class="gallery" style="margin-top:18px">
-        <figure class="shot reveal">
-          <img src="DSCF6527.jpg" alt="Dr Reddy portrait"/>
-        </figure>
-        <figure class="shot reveal">
-          <img src="portrait-2.jpg" alt="Portrait 2 placeholder"/>
-        </figure>
+      <div class="eyebrow">Publications</div>
+      <h2 class="kicker">Selected Publications (Hyderabad)</h2>
+      <p class="muted">Appears in the literature as <strong>N.V.S. Sekhar Reddy</strong> and <strong>Nallamilli V. S. Sekhar Reddy</strong>.</p>
+      <div class="card reveal" style="margin-top:18px">
+        <ul class="muted" style="margin:8px 0 0 18px">
+          <li><a href="https://link.springer.com/chapter/10.1007/978-981-15-1346-6_4" target="_blank" rel="noopener"><strong>Medical Emergencies in Oral and Maxillofacial Surgical Practice</strong></a> — chapter in <em>Oral and Maxillofacial Surgery for the Clinician</em> (Springer, 2021).</li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/22754742/" target="_blank" rel="noopener"><strong>Surgical Management of Aggressive Central Giant Cell Granuloma of Maxilla through Le Fort I Access Osteotomy</strong></a> — <em>J Clin Imaging Sci</em> (2012). Panineeya Institute of Dental Sciences, Hyderabad.</li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/22439132/" target="_blank" rel="noopener"><strong>Aggressive form of cherubism</strong></a> — <em>J Clin Imaging Sci</em> (2012). Panineeya Institute of Dental Sciences, Hyderabad. <a href="https://europepmc.org/article/pmc/pmc3307211" target="_blank" rel="noopener">Open access</a>.</li>
+          <li><a href="https://www.jcdr.net/ReadXMLFile.aspx?id=4046" target="_blank" rel="noopener"><strong>Giant epidermoid cyst of external ear — a rare case report</strong></a> — <em>J Clin Diagn Res</em> (2014). Panineeya Institute of Dental Sciences, Hyderabad.</li>
+          <li><a href="https://www.ijcasereportsandimages.com/archive/2016/010-2016-ijcri/CR-10700-10-2016-reddy/ijcri-1070010201600-reddy-full-text.php" target="_blank" rel="noopener"><strong>Adenomatoid odontogenic tumor in pregnancy — a case report</strong></a> — <em>Int J Case Rep Images</em> (2016). Panineeya Institute of Dental Sciences, Hyderabad.</li>
+        </ul>
       </div>
     </div>
   </section>
+
+  
 
   <!-- CONTACT DETAILS (no personal email) -->
   
@@ -395,6 +413,20 @@
         </article>
       </div>
       <p class="muted" style="margin-top:14px">Hospital (NHS) appointments are via referral pathways; please contact your GP or the hospital directly if relevant.</p>
+    </div>
+  </section>
+
+  <!-- CASE GALLERY (future content) -->
+  <section id="case-gallery">
+    <div class="section-wrap">
+      <div class="eyebrow">Gallery</div>
+      <h2 class="kicker">Case Gallery (coming soon)</h2>
+      <p class="muted">We’ll showcase anonymised before‑and‑after images and surgical workflows here.</p>
+      <div class="gallery" style="margin-top:18px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px">
+        <figure class="shot card reveal" style="aspect-ratio:4/3;"> <img loading="lazy" src="placeholder-1.webp" alt="Case placeholder 1" style="width:100%; height:100%; object-fit:cover;"/> </figure>
+        <figure class="shot card reveal" style="aspect-ratio:4/3;"> <img loading="lazy" src="placeholder-2.webp" alt="Case placeholder 2" style="width:100%; height:100%; object-fit:cover;"/> </figure>
+        <figure class="shot card reveal" style="aspect-ratio:4/3;"> <img loading="lazy" src="placeholder-3.webp" alt="Case placeholder 3" style="width:100%; height:100%; object-fit:cover;"/> </figure>
+      </div>
     </div>
   </section>
 
