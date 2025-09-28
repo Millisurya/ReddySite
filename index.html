@@ -1,3 +1,362 @@
-<html>
-hello world
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dr Reddy — Oral & Maxillofacial / Dental Surgery</title>
+  <meta name="description" content="Landing page to showcase Dr Reddy’s academic achievements, clinical work, and extracurricular activities in the medical field." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f14; /* deep slate */
+      --ink:#e9f2ff; /* off-white */
+      --muted:#97a5bb;
+      --brand:#7aa7ff; /* accent blue */
+      --brand-2:#5fe1a5; /* accent green */
+      --card:#111722;
+      --max:1200px;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0; font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(122,167,255,.08), transparent 60%),
+                  radial-gradient(1000px 600px at 20% 120%, rgba(95,225,165,.06), transparent 60%),
+                  var(--bg);
+      color:var(--ink);
+      overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:1000;
+      backdrop-filter: saturate(160%) blur(10px);
+      background: linear-gradient(180deg, rgba(11,15,20,.85), rgba(11,15,20,.60));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav .wrap{max-width:var(--max); margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:14px 20px;}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.3px}
+    .brand .dot{width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 0 20px rgba(127,178,255,.6)}
+    .nav ul{list-style:none; display:flex; gap:22px; padding:0; margin:0}
+    .nav a{font-weight:600; opacity:.9}
+    .nav a:hover{opacity:1}
+
+    /* HERO */
+    .hero{position:relative; min-height:88vh; display:grid; place-items:center; padding:80px 20px 40px}
+    .hero .wrap{max-width:var(--max); margin:0 auto; display:grid; grid-template-columns: 1.1fr .9fr; gap:40px; align-items:center}
+    .hero h1{font-size: clamp(36px, 6vw, 68px); line-height:1.02; margin:10px 0 18px}
+    .hero p{font-size: clamp(16px, 2.4vw, 18px); color:var(--muted); margin:0 0 26px}
+    .cta{display:flex; gap:14px; flex-wrap:wrap}
+    .btn{padding:12px 18px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#131a26; font-weight:700}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#0b0f14; border-color:transparent}
+    .btn:hover{transform:translateY(-1px)}
+    .hero-visual{position:relative; isolation:isolate}
+    .orb{position:absolute; inset:-10% -20% auto auto; width:600px; height:600px; border-radius:50%; filter:blur(60px); opacity:.25; background:radial-gradient(circle at 40% 40%, var(--brand), transparent 60%)}
+
+    .portrait-frame{position:relative; border-radius:24px; overflow:hidden; box-shadow: var(--shadow); background: linear-gradient(180deg,#0e1520,#0a0f16);
+      border:1px solid rgba(255,255,255,.06)}
+    .portrait-frame::after{content:""; position:absolute; inset:-40% -20% auto auto; height:140%; width:80%; background:radial-gradient(600px 600px at 90% 10%, rgba(127,178,255,.15), transparent 60%); pointer-events:none}
+    .portrait{aspect-ratio: 4/5; width:100%; object-fit:cover; opacity:0}
+    .caption{position:absolute; left:16px; bottom:16px; padding:8px 12px; border-radius:10px; background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.1); font-size:14px}
+
+    /* SECTION BASE */
+    section{padding:84px 20px}
+    .section-wrap{max-width:var(--max); margin:0 auto}
+    .eyebrow{color:var(--brand); font-weight:800; letter-spacing:.2em; text-transform:uppercase; font-size:12px}
+    .kicker{font-size: clamp(28px, 4vw, 42px); line-height:1.1; margin:.2em 0 .4em}
+    .muted{color:var(--muted)}
+
+    /* QUALIFICATIONS (center of page) */
+    #qualifications{scroll-margin-top:100px}
+    .grid{display:grid; gap:18px}
+    .grid.cols-3{grid-template-columns: repeat(3, 1fr)}
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:22px; box-shadow: var(--shadow)}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; background:rgba(122,167,255,.12); border:1px solid rgba(122,167,255,.3); color:var(--brand); border-radius:999px; font-weight:700; font-size:12px}
+
+    /* PINNED ACHIEVEMENTS */
+    #achievements{position:relative}
+    .pin-wrap{position:relative}
+    .panels{position:relative; height:320vh}
+    .panel{position:sticky; top:80px; min-height:65vh; display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center; padding:40px; background:transparent}
+    .panel .visual{border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.08); background:linear-gradient(180deg,#0e1520,#0a0f16)}
+    .panel .visual img{width:100%; height:100%; object-fit:cover; opacity:.85}
+    .dotline{height:2px; background-image: linear-gradient(90deg, rgba(255,255,255,.16) 33%, rgba(255,255,255,0) 0); background-size:12px 2px; background-repeat:repeat-x; margin:10px 0 20px}
+
+    /* GALLERY */
+    .gallery{display:grid; grid-template-columns: 1fr 1fr; gap:18px}
+    .gallery .shot{position:relative; border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.06); background:linear-gradient(180deg,#0e1520,#0a0f16)}
+    .gallery .shot img{width:100%; height:100%; object-fit:cover}
+
+    /* APPOINTMENTS */
+    #appointments .cards{display:grid; grid-template-columns: repeat(2,1fr); gap:18px}
+    .practice{display:grid; gap:12px}
+    .practice h4{margin:0}
+    .btn.link{display:inline-flex; align-items:center; gap:8px}
+    .btn.link svg{width:18px; height:18px}
+
+    /* CONTACT */
+    #contact .cards{display:grid; grid-template-columns: repeat(2,1fr); gap:18px}
+    .contact-card{display:flex; flex-direction:column; gap:8px}
+
+    /* FOOTER */
+    footer{padding:40px 20px; color:var(--muted); border-top:1px solid rgba(255,255,255,.08)}
+
+    /* REVEALS */
+    .reveal{opacity:0; transform: translateY(14px);}
+    .show{opacity:1 !important; transform:none !important; transition: opacity .8s ease, transform .8s ease}
+
+    @media (max-width: 980px){
+      .hero .wrap, .panel{grid-template-columns:1fr;}
+      .gallery{grid-template-columns:1fr}
+      #appointments .cards, #contact .cards{grid-template-columns:1fr}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .reveal{opacity:1; transform:none}
+      .portrait{opacity:1}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav" aria-label="Primary">
+    <div class="wrap">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> Dr Reddy</div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#appointments">Book an appointment</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">Oral Surgery • Dental Implants • Academic</div>
+        <h1 class="reveal">Compassionate surgical care<br/> with academic rigor.</h1>
+        <p class="reveal">Dr Reddy is an Oral & Maxillofacial / Oral Surgery specialist with decades of experience in complex extractions, dental implantology, and hospital-based care — alongside active involvement in teaching, research, and medical outreach.</p>
+        <div class="cta">
+          <a class="btn primary" href="#appointments">Book an appointment</a>
+          <a class="btn" href="#qualifications">View qualifications</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="orb" aria-hidden="true"></div>
+        <figure class="portrait-frame">
+          <!-- Replace the placeholder images with real portraits (recommended size ≥ 1600px tall) -->
+          <img class="portrait" src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=1200&auto=format&fit=crop" alt="Portrait of Dr Reddy" />
+          <figcaption class="caption">Consultant Oral Surgeon</figcaption>
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- QUALIFICATIONS (center of page) -->
+  <section id="qualifications">
+    <div class="section-wrap">
+      <div class="eyebrow">Credentials</div>
+      <h2 class="kicker">Degrees & Qualifications</h2>
+      <p class="muted">Replace the sample entries below with the exact details from the CV when provided.</p>
+      <div class="grid cols-3" style="margin-top:18px">
+        <article class="card reveal">
+          <span class="badge">🎓 Degree</span>
+          <h3 style="margin:.6em 0 .2em">BDS, MDS (Oral & Maxillofacial Surgery)</h3>
+          <p class="muted">University / Year — <em>placeholder</em></p>
+        </article>
+        <article class="card reveal">
+          <span class="badge">🏅 Distinction</span>
+          <h3 style="margin:.6em 0 .2em">Gold Medal in Oral Surgery</h3>
+          <p class="muted">Awarding body / Year — <em>placeholder</em></p>
+        </article>
+        <article class="card reveal">
+          <span class="badge">📜 Affiliations</span>
+          <h3 style="margin:.6em 0 .2em">Fellowships & Memberships</h3>
+          <p class="muted">e.g., RCSEd / RCPSG / ITI — <em>placeholder</em></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PINNED ACHIEVEMENTS (scroll-reveal like Apple product pages) -->
+  <section id="achievements">
+    <div class="section-wrap pin-wrap">
+      <div class="eyebrow">Highlights</div>
+      <h2 class="kicker">Academic & Extracurricular</h2>
+      <div class="panels">
+        <div class="panel" aria-label="Hospital & Teaching">
+          <div>
+            <h3>Hospital Appointments & Teaching</h3>
+            <div class="dotline"></div>
+            <p class="muted">Consultant/Locum roles; undergraduate and CPD teaching; invited talks. <em>Replace with specifics (institutions, years, responsibilities).</em></p>
+          </div>
+          <div class="visual">
+            <img src="https://images.unsplash.com/photo-1583912267550-d9f3f773fbdb?q=80&w=1200&auto=format&fit=crop" alt="Teaching and hospital work"/>
+          </div>
+        </div>
+        <div class="panel" aria-label="Research & Publications">
+          <div>
+            <h3>Research & Publications</h3>
+            <div class="dotline"></div>
+            <p class="muted">Peer‑reviewed articles, conference abstracts, study clubs. <em>Replace with titles, journals, links, and co‑authors.</em></p>
+          </div>
+          <div class="visual">
+            <img src="https://images.unsplash.com/photo-1581091014534-8987c1d4eb1b?q=80&w=1200&auto=format&fit=crop" alt="Research imagery"/>
+          </div>
+        </div>
+        <div class="panel" aria-label="Community & Outreach">
+          <div>
+            <h3>Community • Outreach • Leadership</h3>
+            <div class="dotline"></div>
+            <p class="muted">Student mentoring, surgical camps, dental society roles, charity events. <em>Replace with dates, locations, and roles.</em></p>
+          </div>
+          <div class="visual">
+            <img src="https://images.unsplash.com/photo-1551445520-6339d48c50b3?q=80&w=1200&auto=format&fit=crop" alt="Community and outreach"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTRAITS / GALLERY -->
+  <section id="gallery">
+    <div class="section-wrap">
+      <div class="eyebrow">Gallery</div>
+      <h2 class="kicker">Portraits</h2>
+      <p class="muted">Drop two high‑resolution portraits below. Keep face prominent; background simple.</p>
+      <div class="gallery" style="margin-top:18px">
+        <figure class="shot reveal">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop" alt="Portrait 1 placeholder"/>
+        </figure>
+        <figure class="shot reveal">
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop" alt="Portrait 2 placeholder"/>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT DETAILS (no personal email) -->
+  <section id="contact">
+    <div class="section-wrap">
+      <div class="eyebrow">Contact</div>
+      <h2 class="kicker">How to reach Dr Reddy</h2>
+      <p class="muted">For appointments, please use the partner practice links below. No personal email is listed on this site.</p>
+      <div class="cards" style="margin-top:18px">
+        <article class="card contact-card reveal">
+          <h3 style="margin:.2em 0 .4em">Union Dental & Facial Solutions — Inverness</h3>
+          <p class="muted">19 Union Street, Inverness IV1 1PP • Tel: 01463 242344</p>
+          <div class="cta"><a class="btn link" href="#appointments">Go to appointments</a></div>
+        </article>
+        <article class="card contact-card reveal">
+          <h3 style="margin:.2em 0 .4em">Orchard Road Dental Practice — Forres</h3>
+          <p class="muted">The Mews, Orchard Road, Forres IV36 1PJ • Tel: 01309 675544</p>
+          <div class="cta"><a class="btn link" href="#appointments">Go to appointments</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPOINTMENTS (buttons link to practice websites) -->
+  <section id="appointments">
+    <div class="section-wrap">
+      <div class="eyebrow">Book</div>
+      <h2 class="kicker">Book an appointment via partner practices</h2>
+      <p class="muted">Choose a practice below to schedule. You’ll be taken to their official website to complete the booking.</p>
+      <div class="cards" style="margin-top:18px">
+        <article class="card practice reveal">
+          <h4>Union Dental & Facial Solutions — Inverness</h4>
+          <p class="muted">Online contact/booking form available.</p>
+          <div class="cta">
+            <a class="btn primary" href="https://www.uniondentalinverness.co.uk/contact" target="_blank" rel="noopener">Book at Union Dental</a>
+            <a class="btn" href="https://www.uniondentalinverness.co.uk/" target="_blank" rel="noopener">Visit website</a>
+          </div>
+        </article>
+        <article class="card practice reveal">
+          <h4>Orchard Road Dental Practice — Forres</h4>
+          <p class="muted">Call to book; contact details on their site.</p>
+          <div class="cta">
+            <a class="btn primary" href="https://www.orchardroaddentalpractice.co.uk/" target="_blank" rel="noopener">Book at Orchard Road</a>
+            <a class="btn" href="https://www.orchardroaddentalpractice.co.uk/about/" target="_blank" rel="noopener">Contact page</a>
+          </div>
+        </article>
+      </div>
+      <p class="muted" style="margin-top:14px">NHS hospital appointments are via referral pathways; please contact your GP or the hospital directly if relevant.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="section-wrap">
+      <small>© <span id="year"></span> Dr Reddy. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <!-- GSAP for scroll-driven animations (no frameworks) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script>
+    // Ensure animations register only after GSAP is ready
+    window.addEventListener('load', () => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Simple intersection reveals (fallback + base effects)
+      const io = ('IntersectionObserver' in window) ? new IntersectionObserver((entries)=>{
+        for(const e of entries){ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} }
+      }, {threshold: 0.12}) : null;
+      document.querySelectorAll('.reveal').forEach(el => {
+        if(io) io.observe(el); else el.classList.add('show');
+      });
+
+      // If user prefers reduced motion, skip scroll-linked animations
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(prefersReduced || !window.gsap || !window.ScrollTrigger){
+        document.querySelectorAll('.portrait').forEach(img => img.style.opacity = 1);
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Hero portrait load-in + parallax hover
+      gsap.to('.portrait', { opacity:1, duration:1.2, ease:'power2.out', delay:.2 });
+
+      // Pinned achievements panels — Apple-style scroll storytelling
+      const panels = gsap.utils.toArray('.panel');
+      panels.forEach((panel, i) => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: panel,
+            start: 'top 60%',
+            end: 'bottom 30%',
+            scrub: true,
+          }
+        });
+        tl.fromTo(panel.querySelector('h3'), {y: 30, opacity:0}, {y:0, opacity:1})
+          .fromTo(panel.querySelector('.visual'), {scale: .95, opacity:.6}, {scale:1, opacity:1}, 0)
+          .fromTo(panel.querySelector('p'), {y:20, opacity:0}, {y:0, opacity:1}, 0.1);
+      });
+
+      // Subtle global parallax on hero orb
+      gsap.to('.orb', { y: 60, x: -30, ease:'none', scrollTrigger: { scrub: true }});
+
+      // Smooth anchor scroll offset fix for sticky nav
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href');
+          if(id.length > 1){
+            e.preventDefault();
+            const el = document.querySelector(id);
+            if(el){ window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 72, behavior:'smooth' }); }
+          }
+        });
+      });
+    });
+  </script>
+</body>
 </html>
